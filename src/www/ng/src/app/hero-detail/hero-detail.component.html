@@ -1,0 +1,19 @@
+<div *ngIf="book">
+	<h2>{{book.title | uppercase}} Details</h2>
+	<div><span>id: </span>{{book.id}}</div>
+	<div>
+		<span>author<span *ngIf="book.authors.length > 1">s</span>: </span>
+		<span *ngFor="let author of book.authors">{{author.name}} {{author.surname}}<span *ngIf="book.authors.indexOf(author) < book.authors.length - 1">, </span></span>
+	</div>
+	<div><span>publisher: </span>{{book.publisher.name}}</div>
+	<div><span>place: </span>{{book.publisher.place}}</div>
+	<div><span>pages: </span>{{book.pages}}</div>
+	<div><span>price: </span>{{book.price}} €</div>
+	<div>
+		<label>name:
+		<input [(ngModel)]="book.title" placeholder="name"/>
+		</label>
+	</div>
+	<button (click)="goBack()">go back</button>&nbsp;
+	<button (click)="save()">save</button>
+</div>
